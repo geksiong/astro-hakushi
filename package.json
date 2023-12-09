@@ -8,7 +8,7 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "lint": "eslint \"src/**/*.{js,astro}\" && stylelint --allow-empty-input \"**/*.{css,scss}\""
+    "lint": "eslint \"src/**/*.{js,ts,astro}\" && stylelint --allow-empty-input \"**/*.{css,scss}\""
   },
   "dependencies": {
     "@astrojs/check": "^0.3.1",
