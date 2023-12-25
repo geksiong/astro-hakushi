@@ -5,12 +5,14 @@ import FormattedDate from "@components/FormattedDate.astro";
 import TableOfContents from '@components/TableOfContents.astro';
 
 const { title, description, pubDate, updatedDate, heroImage, tags } = Astro.props.frontmatter;
+const prevPost = Astro.props.prev;
+const nextPost = Astro.props.next;
 const headings = Astro.props.headings;
 const minutesRead = Astro.props.remarkPluginFrontmatter?.minutesRead;
 const wordCount = Astro.props.remarkPluginFrontmatter?.wordCount;
 ---
 
-<article class="prose">
+<article class="prose pb-8">
   <h1>{title}</h1>
   <div>
     <FormattedDate date={pubDate} /> { minutesRead && <span> / {wordCount} ({minutesRead})}</span>
@@ -33,20 +35,24 @@ const wordCount = Astro.props.remarkPluginFrontmatter?.wordCount;
   <slot />
 </article>
 <ul class="flex">
-  <li class="flex-grow basis-1/2">
-    <a href="#" class="flex items-center">
-      <Icon name="ri:arrow-left-line" height="1.5em" class="" />
-      <span>
-        Older<br />(article title)
-      </span>
-    </a>
-  </li>
-  <li class="flex-grow basis-1/2 text-right">
-    <a href="#" class="flex items-center">
-      <span class="flex-grow">
-        Newer<br />(article title)
-      </span>
-      <Icon name="ri:arrow-right-line" height="1.5em" class="" />
-    </a>
-  </li>
+  { prevPost &&
+    <li class="flex-grow basis-1/2">
+      <a href=`../${prevPost.slug}/` class="flex items-center">
+        <Icon name="ri:arrow-left-line" height="1.5em" class="" />
+        <span>
+          <FormattedDate date={prevPost.data.pubDate} /><br />{prevPost.data.title}
+        </span>
+      </a>
+    </li>
+  }
+  { nextPost &&
+    <li class="flex-grow basis-1/2 text-right">
+      <a href=`../${nextPost.slug}/` class="flex items-center">
+        <span class="flex-grow">
+          <FormattedDate date={nextPost.data.pubDate} /><br />{nextPost.data.title}
+        </span>
+        <Icon name="ri:arrow-right-line" height="1.5em" class="" />
+      </a>
+    </li>
+  }
 </ul>

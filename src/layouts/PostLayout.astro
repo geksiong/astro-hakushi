@@ -17,6 +17,8 @@ const { title, description } = Astro.props.frontmatter;
     <main class="p-8">
       <Post
         frontmatter={Astro.props.frontmatter}
+        prev={Astro.props.prev}
+        next={Astro.props.next}
         headings={Astro.props.headings}
         remarkPluginFrontmatter={Astro.props.remarkPluginFrontmatter}
       >

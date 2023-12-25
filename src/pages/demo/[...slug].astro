@@ -4,20 +4,30 @@ import PostLayout from "@layouts/PostLayout.astro";
 import { type CollectionEntry, getCollection } from "astro:content";
 
 export async function getStaticPaths() {
-  const posts = await getCollection("demo");
-  return posts.map((post) => ({
+  const posts = (await getCollection("demo")).sort((a, b) => {
+    let dateA = new Date(a.data.updatedDate ? a.data.updatedDate : a.data.pubDate).valueOf();
+    let dateB = new Date(b.data.updatedDate ? b.data.updatedDate : b.data.pubDate).valueOf();
+    return dateB - dateA;
+  });
+
+  return posts.map((post, i) => ({
     params: { slug: post.slug },
-    props: post,
+    props: {
+      post,
+      prev: i < posts.length - 1 && posts[i + 1],
+      next: i > 0 && posts[i - 1],
+    }
   }));
 }
-type Props = CollectionEntry<"demo">;
 
-const post = Astro.props;
+const { post, prev, next } = Astro.props;
 const { Content, headings, remarkPluginFrontmatter } = await post.render();
 ---
 
 <PostLayout
   frontmatter={post.data}
+  prev={prev}
+  next={next}
   headings={headings}
   remarkPluginFrontmatter={remarkPluginFrontmatter}
 >
