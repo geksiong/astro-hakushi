@@ -5,6 +5,16 @@ tagline: What will you create today?
 
 postsPerPage: 2
 
+nav:
+  - url: /blog
+    name: Blog
+  - url: /notes
+    name: Notes
+  - url: /lab
+    name: Lab
+  - url: /demo
+    name: Demo
+
 links:
   - url: https://www.twitter.com
     logo: "ri:twitter-fill"
