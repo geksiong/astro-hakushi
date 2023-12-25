@@ -1,0 +1,20 @@
+---
+import { getCollection } from "astro:content";
+
+import BaseLayout from "@layouts/BaseLayout.astro";
+
+const allPosts = await getCollection("demo");
+const uniqueTags = [...new Set(allPosts.map((post) => post.data.tags ? post.data.tags : []).flat())];
+
+const title = "All Tags";
+const description = "";
+
+---
+<BaseLayout frontmatter={{ title, description }}>
+  <div class="w-full">
+    <h1 class="text-2xl font-bold">{title}</h1>
+    <ul>
+      {uniqueTags.map((tag) => <li><a href={`/demo/tags/${tag}/`}>{tag}</a></li>)}
+    </ul>
+  </div>
+</BaseLayout>
