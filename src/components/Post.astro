@@ -1,6 +1,8 @@
 ---
 import Icon from "astro-icon";
-import FormattedDate from "./FormattedDate.astro";
+
+import FormattedDate from "@components/FormattedDate.astro";
+import TableOfContents from '@components/TableOfContents.astro';
 
 const { title, description, pubDate, updatedDate, heroImage, tags } = Astro.props.frontmatter;
 const headings = Astro.props.headings;
@@ -11,7 +13,7 @@ const headings = Astro.props.headings;
   <div>
     <FormattedDate date={pubDate} /><br />
   </div>
-  <div class="flex items-center">
+  <div class="flex items-center pb-8">
     <Icon name="mdi:tag" height="1em" />
     <span class="inline-block">
       {
@@ -24,23 +26,7 @@ const headings = Astro.props.headings;
     </span>
   </div>
 
-  <details class="pt-8">
-    <summary>On this page</summary>
-    <ul>
-      <li>
-        Heading 1
-        <ul>
-          <li>Item 1</li>
-          <li>Item 2</li>
-          <li>Item 3</li>
-          <li>Item 4</li>
-        </ul>
-      </li>
-      <li>Heading 2</li>
-      <li>Heading 3</li>
-      <li>Heading 4</li>
-    </ul>
-  </details>
+  <TableOfContents headings={headings} />
 
   <slot />
 </article>
