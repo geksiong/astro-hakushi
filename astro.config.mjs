@@ -12,10 +12,13 @@ import robotsConfig from "./robots-txt.config";
 import webmanifest from "astro-webmanifest";
 import webmanifestConfig from "./webmanifest.config";
 
+import expressiveCode from "astro-expressive-code";
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://change.me",
   integrations: [
+    expressiveCode(),
     mdx(),
     tailwind(),
     sitemap(),
