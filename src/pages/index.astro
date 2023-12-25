@@ -1,17 +1,17 @@
 ---
-import { Icon } from 'astro-icon'
+import { Icon } from "astro-icon";
+
+import BaseLayout from "@layouts/BaseLayout.astro";
+
+import siteConfig from "@site/config.yml";
+
+let frontmatter = {
+  title: siteConfig.site_title,
+  description: siteConfig.site_description,
+};
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
-  </head>
-  <body>
-    <h1>Astro</h1>
-    This site is built with <Icon name="logos:astro" class="h-32 w-32"/>
-  </body>
-</html>
+<BaseLayout frontmatter={frontmatter}>
+  <h1>Hello my astronaut friend!</h1>
+  <Icon name="openmoji:astronaut" />
+</BaseLayout>

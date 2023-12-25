@@ -1,0 +1,14 @@
+site_title: 白紙
+site_description: 白紙 (hakushi) is a minimalist site template built with Astro
+copyright: Your name here. All rights reserved.
+tagline: What will you create today?
+links:
+  - url: https://www.twitter.com
+    logo: "ri:twitter-fill"
+    name: My Twitter
+  - url: https://github.com
+    logo: "ri:github-fill"
+    name: My GitHub
+  - url: "#"
+    logo: "ri:rss-fill"
+    name: RSS Feed

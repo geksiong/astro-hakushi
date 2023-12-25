@@ -1,0 +1,48 @@
+---
+import Icon from "astro-icon";
+
+const { title, description, pubDate, updatedDate, heroImage, tags } = Astro.props.frontmatter;
+const headings = Astro.props.headings;
+---
+
+<article class="prose">
+  <h1>{title}</h1>
+
+  <details>
+    <summary>On this page</summary>
+    <ul>
+      <li>
+        Heading 1
+        <ul>
+          <li>Item 1</li>
+          <li>Item 2</li>
+          <li>Item 3</li>
+          <li>Item 4</li>
+        </ul>
+      </li>
+      <li>Heading 2</li>
+      <li>Heading 3</li>
+      <li>Heading 4</li>
+    </ul>
+  </details>
+
+  <slot />
+</article>
+<ul class="flex">
+  <li class="flex-grow basis-1/2">
+    <a href="#" class="flex items-center">
+      <Icon name="ri:arrow-left-line" height="1.5em" class="" />
+      <span>
+        Older<br />(article title)
+      </span>
+    </a>
+  </li>
+  <li class="flex-grow basis-1/2 text-right">
+    <a href="#" class="flex items-center">
+      <span class="flex-grow">
+        Newer<br />(article title)
+      </span>
+      <Icon name="ri:arrow-right-line" height="1.5em" class="" />
+    </a>
+  </li>
+</ul>

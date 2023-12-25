@@ -1,0 +1,23 @@
+---
+import Icon from "astro-icon";
+
+import Brand from "@components/Brand.astro";
+---
+
+<nav class="flex flex-wrap items-center bg-gray-100 px-8 py-4">
+  <div id="brand" class="flex-grow basis-1/4">
+    <a href="/"><Brand /></a>
+  </div>
+
+  <div class="flex-grow basis-1/2 space-x-4 text-center">
+    <a href="#">Blog</a>
+    <a href="#">Tech Notes</a>
+    <a href="#">Lab</a>
+    <a href="/demo">Demo</a>
+  </div>
+
+  <div class="flex-grow basis-1/4 space-x-2 text-right">
+    <button><Icon name="ri:search-line" height="1.5em" /></button>
+    <button><Icon name="ri:moon-line" height="1.5em" /></button>
+  </div>
+</nav>
