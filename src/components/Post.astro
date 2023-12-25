@@ -6,12 +6,14 @@ import TableOfContents from '@components/TableOfContents.astro';
 
 const { title, description, pubDate, updatedDate, heroImage, tags } = Astro.props.frontmatter;
 const headings = Astro.props.headings;
+const minutesRead = Astro.props.remarkPluginFrontmatter?.minutesRead;
+const wordCount = Astro.props.remarkPluginFrontmatter?.wordCount;
 ---
 
 <article class="prose">
   <h1>{title}</h1>
   <div>
-    <FormattedDate date={pubDate} /><br />
+    <FormattedDate date={pubDate} /> { minutesRead && <span> / {wordCount} ({minutesRead})}</span>
   </div>
   <div class="flex items-center pb-8">
     <Icon name="mdi:tag" height="1em" />
