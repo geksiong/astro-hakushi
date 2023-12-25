@@ -1,5 +1,6 @@
 ---
 import Icon from "astro-icon";
+import FormattedDate from "./FormattedDate.astro";
 
 const { title, description, pubDate, updatedDate, heroImage, tags } = Astro.props.frontmatter;
 const headings = Astro.props.headings;
@@ -7,8 +8,23 @@ const headings = Astro.props.headings;
 
 <article class="prose">
   <h1>{title}</h1>
+  <div>
+    <FormattedDate date={pubDate} /><br />
+  </div>
+  <div class="flex items-center">
+    <Icon name="mdi:tag" height="1em" />
+    <span class="inline-block">
+      {
+        tags.map((tag: any) => (
+          <a href=`/demo/tags/${tag}` class="pl-2">
+            {tag}
+          </a>
+        ))
+      }
+    </span>
+  </div>
 
-  <details>
+  <details class="pt-8">
     <summary>On this page</summary>
     <ul>
       <li>

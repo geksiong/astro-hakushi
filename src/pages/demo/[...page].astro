@@ -1,0 +1,62 @@
+---
+import type { PaginateFunction, Page } from "astro";
+import { type CollectionEntry, getCollection } from "astro:content";
+import Icon from "astro-icon";
+
+import BaseLayout from "@layouts/BaseLayout.astro";
+import FormattedDate from "@components/FormattedDate.astro";
+
+import siteConfig from "@site/config.yml";
+
+export async function getStaticPaths({ paginate }: { paginate: PaginateFunction }) {
+  const posts = (await getCollection("demo")).sort((a, b) => {
+    let dateA = new Date(a.data.updatedDate ? a.data.updatedDate : a.data.pubDate).valueOf();
+    let dateB = new Date(b.data.updatedDate ? b.data.updatedDate : b.data.pubDate).valueOf();
+    return dateB - dateA;
+  });
+
+  return paginate(posts, { pageSize: siteConfig.postsPerPage });
+}
+
+const { page } = Astro.props;
+---
+
+<BaseLayout frontmatter={(siteConfig.site_title, siteConfig.site_description)}>
+  <div class="w-full">
+    <ul>
+      {
+        page.data.map((post) => (
+          <li class="flex">
+            <span class="pr-8">
+              <FormattedDate date={post.data.pubDate} />
+            </span>
+            <a href={`/demo/${post.slug}/`}>
+              <span class="title">{post.data.title}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <div class="flex pt-8">
+      {
+        page.url.next ? (
+          <a href={page.url.next} title="Older posts" class="flex-grow basis-1/2">
+            <Icon name="ri:arrow-left-line" height="1em" class="inline" /> Older posts
+          </a>
+        ) : (
+          <div />
+        )
+      }
+
+      {
+        page.url.prev ? (
+          <a href={page.url.prev} title="Newer posts" class="flex-grow basis-1/2 text-right">
+            Newer posts <Icon name="ri:arrow-right-line" height="1em" class="inline" />
+          </a>
+        ) : (
+          <div />
+        )
+      }
+    </div>
+  </div>
+</BaseLayout>

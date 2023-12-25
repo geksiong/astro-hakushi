@@ -2,6 +2,9 @@ site_title: 白紙
 site_description: 白紙 (hakushi) is a minimalist site template built with Astro
 copyright: Your name here. All rights reserved.
 tagline: What will you create today?
+
+postsPerPage: 2
+
 links:
   - url: https://www.twitter.com
     logo: "ri:twitter-fill"
