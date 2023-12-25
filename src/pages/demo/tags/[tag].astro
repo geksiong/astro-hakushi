@@ -1,0 +1,54 @@
+---
+import { getCollection } from "astro:content";
+import Icon from "astro-icon";
+
+import FormattedDate from "@components/FormattedDate.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+
+export async function getStaticPaths() {
+  const allPosts = await getCollection("demo");
+  const sortedPosts = allPosts.sort((a, b) => {
+    let dateA = new Date(a.data.updatedDate ? a.data.updatedDate : a.data.pubDate).valueOf();
+    let dateB = new Date(b.data.updatedDate ? b.data.updatedDate : b.data.pubDate).valueOf();
+    return dateB - dateA;
+  });
+  const uniqueTags = [
+    ...new Set(sortedPosts.map((post) => (post.data.tags ? post.data.tags : [])).flat()),
+  ];
+
+  return uniqueTags.map((tag) => {
+    const filteredPosts = allPosts.filter((post) => post.data.tags?.includes(tag));
+    return {
+      params: { tag },
+      props: { posts: filteredPosts },
+    };
+  });
+}
+
+const { tag } = Astro.params;
+const { posts } = Astro.props;
+
+const title = "Tag: " + tag;
+const description = "";
+---
+
+<BaseLayout frontmatter={{ title, description }}>
+  <div class="w-full">
+    <h1 class="text-2xl font-bold"><Icon name="mdi:tag" height="1em" class="inline" />{tag}</h1>
+    <p><a href="/blog/tags">See all tags</a></p>
+    <ul>
+      {
+        posts.map((post) => (
+          <li class="flex">
+            <span class="pr-8">
+              <FormattedDate date={post.data.pubDate} />
+            </span>
+            <a href={`/demo/${post.slug}/`}>
+              <span class="title">{post.data.title}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</BaseLayout>
