@@ -28,3 +28,23 @@ The following will be wrapped in a terminal window
 #!/bin/sh
 echo "This is a script file, not a terminal!"
 ```
+
+## Math
+
+Support for math is provided by `remark-math` and `rehype-katex`:
+
+Entering the following:
+
+```js
+$$
+L = \frac{1}{2} \rho v^2 S C_L
+$$
+```
+
+will generate:
+
+$$
+L = \frac{1}{2} \rho v^2 S C_L
+$$
+
+_Note: Unfortunately we can't use fenced code blocks for math, as Expressive Code will process it first_

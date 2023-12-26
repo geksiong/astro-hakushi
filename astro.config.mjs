@@ -5,6 +5,8 @@ import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
 import rehypeExternalLinks from "rehype-external-links";
 import { remarkReadingTime } from "./src/utils/remark-reading-time.mjs";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
 
 import robotsTxt from "astro-robots-txt";
 import robotsConfig from "./robots-txt.config";
@@ -26,8 +28,9 @@ export default defineConfig({
     webmanifest(webmanifestConfig),
   ],
   markdown: {
-    remarkPlugins: [remarkReadingTime],
+    remarkPlugins: [remarkReadingTime, remarkMath],
     rehypePlugins: [
+      [rehypeKatex, {}],
       [
         rehypeExternalLinks,
         {
