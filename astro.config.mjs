@@ -15,12 +15,13 @@ import webmanifest from "astro-webmanifest";
 import webmanifestConfig from "./webmanifest.config";
 
 import expressiveCode from "astro-expressive-code";
+import { pluginCollapsibleSections } from "@expressive-code/plugin-collapsible-sections";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://change.me",
   integrations: [
-    expressiveCode(),
+    expressiveCode({ plugins: [pluginCollapsibleSections()] }),
     mdx(),
     tailwind(),
     sitemap(),

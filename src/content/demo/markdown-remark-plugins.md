@@ -5,6 +5,7 @@ pubDate: 2023-12-26
 tags:
   - markdown
   - demo
+  - remarkjs
 ---
 
 ## Expressive Code
@@ -22,11 +23,59 @@ function add(a, b) {
 console.log(add(1, 2));
 ```
 
-The following will be wrapped in a terminal window
+You can specify collapsible sections. Here's the same example with the same lines collapsed:
+
+```js collapse={2-4}
+// Example function
+function add(a, b) {
+  return a + b;
+}
+
+console.log(add(1, 2));
+```
+
+You can highlight certain terms, instead of entire lines:
+
+```js "Individual terms" /Even.*supported/
+// Individual terms can be highlighted, too
+function demo() {
+  return "Even regular expressions are supported";
+}
+```
+
+Mark inserted and deleted text:
+
+```js "return true;" ins="inserted" del="deleted"
+function demo() {
+  console.log("These are inserted and deleted marker types");
+  // The return statement uses the default marker type
+  return true;
+}
+```
+
+Diff-like syntax:
+
+```diff lang="js"
+  function thisIsJavaScript() {
+    // This entire block gets highlighted as JavaScript,
+    // and we can still add diff markers to it!
+-   console.log('Old code to be removed')
++   console.log('New and shiny code!')
+  }
+```
+
+The following will be wrapped in a terminal window:
 
 ```sh
 #!/bin/sh
 echo "This is a script file, not a terminal!"
+```
+
+Terminal window with title (note that you cannot start with a comment):
+
+```sh title="Quick start"
+npm install
+npm run dev
 ```
 
 ## Math
