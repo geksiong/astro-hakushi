@@ -14,6 +14,8 @@ import robotsConfig from "./robots-txt.config";
 import webmanifest from "astro-webmanifest";
 import webmanifestConfig from "./webmanifest.config";
 
+import remarkEmoji from "remark-emoji";
+
 import expressiveCode from "astro-expressive-code";
 import { pluginCollapsibleSections } from "@expressive-code/plugin-collapsible-sections";
 
@@ -32,7 +34,13 @@ export default defineConfig({
     webmanifest(webmanifestConfig),
   ],
   markdown: {
-    remarkPlugins: [remarkReadingTime, remarkMath, remarkDirective, remarkCalloutDirectives],
+    remarkPlugins: [
+      remarkReadingTime,
+      remarkMath,
+      remarkDirective,
+      remarkCalloutDirectives,
+      [remarkEmoji, { accessible: true, emoticon: true }],
+    ],
     rehypePlugins: [
       [rehypeKatex, {}],
       [

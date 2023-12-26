@@ -8,6 +8,15 @@ tags:
   - remarkjs
 ---
 
+### Emojis & Emoticons
+
+`remark-emoji` replaces `:emoji:` to real UTF-8 emojis in text. Support for emoticons is also enabled.
+
+Here are some examples:
+
+- Emojis: :smile: :+1:
+- Emoticons: :) :( X-D :-|
+
 ## Expressive Code
 
 The following code block will be highlighted as JavaScript,
