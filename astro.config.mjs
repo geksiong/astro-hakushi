@@ -17,6 +17,9 @@ import webmanifestConfig from "./webmanifest.config";
 import expressiveCode from "astro-expressive-code";
 import { pluginCollapsibleSections } from "@expressive-code/plugin-collapsible-sections";
 
+import remarkDirective from "remark-directive";
+import remarkCalloutDirectives from "@microflash/remark-callout-directives";
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://change.me",
@@ -29,7 +32,7 @@ export default defineConfig({
     webmanifest(webmanifestConfig),
   ],
   markdown: {
-    remarkPlugins: [remarkReadingTime, remarkMath],
+    remarkPlugins: [remarkReadingTime, remarkMath, remarkDirective, remarkCalloutDirectives],
     rehypePlugins: [
       [rehypeKatex, {}],
       [
