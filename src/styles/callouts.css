@@ -1,79 +1,72 @@
 .callout {
-  --callout-color: hsl(207, 14%, 62%);
-  --callout-background: ;
-  --callout-border: 1px solid hsl(205, 15%, 33%);
+  --callout-color: var(--secondary);
+  --callout-background: var(--secondary-container);
+  --callout-border: 1px solid var(--secondary);
   --callout-radius: 0.4rem;
-  --callout-padding: 2ch;
+  --callout-padding: 0.8rem;
   border-left: var(--callout-border);
   border-radius: var(--callout-radius);
   background: var(--callout-background);
   color: var(--callout-color);
-}
-
-.callout code,
-.callout pre {
-  background-color: var(--callout-color);
-  border: none;
+  box-shadow: rgba(0, 0, 0, 0.357) 1.8px 1.8px 3.6px 0px;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
 }
 
 .callout-content {
-  padding: var(--callout-padding);
+  padding: 0 var(--callout-padding);
 }
 
-.callout-content:first-child,
-.callout-content:only-child {
-  margin-block-start: 0;
+.callout-content *:first-child {
+  margin-top: 0.5rem;
 }
 
-.callout-content:last-child,
-.callout-content:only-child {
-  margin-block-end: 0;
+.callout-content *:last-child {
+  margin-bottom: 0.5rem;
 }
 
 .callout-indicator {
   display: flex;
   align-items: center;
-  padding: var(--callout-padding) var(--callout-padding) 0;
+  padding: 0 var(--callout-padding);
 }
 
 .callout-hint {
-  margin-inline-end: calc(var(--callout-padding) / 4);
   color: var(--callout-color);
 }
 
 .callout-title {
-  margin-inline-start: calc(var(--callout-padding) / 4);
-  font-size: 0.9em;
+  margin-left: 0.3em;
+  font-size: 1em;
   font-weight: bold;
-  letter-spacing: 0.04em;
 }
 
 .callout-note {
-  --callout-background: hsl(240, 1%, 28%);
-  --callout-color: hsl(240, 33%, 99%);
-  --callout-border: 5px solid hsl(225, 5%, 84%);
+  --callout-background: var(--container);
+  --callout-color: var(--text);
+  --callout-border: var(--callout-radius) solid var(--text);
 }
 
 .callout-commend {
-  --callout-background: hsl(120, 100%, 10%);
-  --callout-color: hsl(120, 47%, 93%);
-  --callout-border: 5px solid hsl(120, 100%, 29%);
+  --callout-background: var(--success-container);
+  --callout-color: var(--success);
+  --callout-border: var(--callout-radius) solid var(--success);
 }
 
 .callout-warn {
-  --callout-background: hsl(44, 100%, 15%);
-  --callout-color: hsl(43, 100%, 95%);
-  --callout-border: 5px solid hsl(44, 100%, 45%);
+  --callout-background: var(--warning-container);
+  --callout-color: var(--warning);
+  --callout-border: var(--callout-radius) solid var(--warning);
 }
 
 .callout-deter {
-  --callout-background: hsl(358, 63%, 18%);
-  --callout-color: hsl(357, 100%, 96%);
-  --callout-border: 5px solid hsl(358, 74%, 54%);
+  --callout-background: var(--error-container);
+  --callout-color: var(--error);
+  --callout-border: var(--callout-radius) solid var(--error);
 }
 
 .callout-assert {
-  --callout-background: hsl(194, 48%, 19%);
-  --callout-color: hsl(196, 89%, 86%);
-  --callout-border: 5px solid hsl(195, 61%, 56%);
+  --callout-background: var(--info-container);
+  --callout-color: var(--info);
+  --callout-border: var(--callout-radius) solid var(--info);
 }

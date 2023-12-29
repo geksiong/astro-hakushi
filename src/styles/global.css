@@ -1,12 +1,67 @@
-@import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Signika+Negative&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Fira+Code&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Signika+Negative:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap");
 
 @import url(./callouts.css);
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Colors generated using realtimecolors.com */
+@layer base {
+  :root {
+    --text: #161d1d;
+    --background: #f5fafb;
+    --container: #e9efef;
+
+    --primary: #006970;
+    --secondary: #4a6365;
+    --accent: #505e7d;
+
+    --primary-container: #9df0f9;
+    --secondary-container: #cce8ea;
+    --accent-container: #d7e2ff;
+
+    --info: var(--primary);
+    --success: #1a6b52;
+    --warning: #626118;
+    --error: #ba1a1a;
+
+    --info-container: var(--primary-container);
+    --success-container: #a6f2d2;
+    --warning-container: #e8e78f;
+    --error-container: #ffdad6;
+  }
+  .dark {
+    --text: #dee4e4;
+    --background: #0e1415;
+    --container: #1a2121;
+
+    --primary: #81d4dc;
+    --secondary: #b1cbce;
+    --accent: #b8c6ea;
+
+    --primary-container: #004f55;
+    --secondary-container: #324b4d;
+    --accent-container: #384764;
+
+    --info: var(--primary);
+    --success: #8ad6b7;
+    --warning: #cccb76;
+    --error: #ffb4ab;
+
+    --info-container: var(--primary-container);
+    --success-container: #00513c;
+    --warning-container: #4a4900;
+    --error-container: #93000a;
+  }
+}
+
+html {
+  font-size: 18px;
+  @apply bg-background dark:bg-background text-text dark:text-text;
+}
 
 h1,
 h2,

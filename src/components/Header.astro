@@ -9,7 +9,7 @@ import siteConfig from "@site/config.yml";
 let links = siteConfig.nav;
 ---
 
-<nav class="flex flex-wrap items-center bg-gray-100 px-8 py-4">
+<nav class="flex flex-wrap items-center px-8 py-4">
   <div id="brand" class="flex-grow basis-1/4">
     <a href="/"><Brand /></a>
   </div>
@@ -22,6 +22,62 @@ let links = siteConfig.nav;
 
   <div class="flex-grow basis-1/4 space-x-2 text-right">
     <button><Icon name="ri:search-line" height="1.5em" /></button>
-    <button><Icon name="ri:moon-line" height="1.5em" /></button>
+    <button id="theme-toggle" type="button">
+      <Icon id="theme-toggle-dark-icon" class="hidden" name="ri:moon-line" height="1.5em" />
+      <Icon id="theme-toggle-light-icon" class=hidden" name="ri:sun-line" height="1.5em" />
+  </button>
   </div>
 </nav>
+
+<script is:inline>
+  var themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+  var themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+  function toggleDarkMode() {
+
+    // Change the icons inside the button based on previous settings
+    const isDarkSet = localStorage.getItem('color-theme') === 'dark';
+    const isThemeStored = 'color-theme' in localStorage;
+    const isDarkPreferred = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+    if (isDarkSet || (!isThemeStored && isDarkPreferred)) {
+      themeToggleDarkIcon?.classList.add('hidden');
+      themeToggleLightIcon?.classList.remove('hidden');
+    } else {
+      themeToggleLightIcon?.classList.add('hidden');
+      themeToggleDarkIcon?.classList.remove('hidden');
+    }
+  }
+
+  toggleDarkMode();
+
+  var themeToggleBtn = document.getElementById('theme-toggle');
+
+  themeToggleBtn?.addEventListener('click', function() {
+    // toggle icons inside button
+    themeToggleDarkIcon?.classList.toggle('hidden');
+    themeToggleLightIcon?.classList.toggle('hidden');
+
+    // if set via local storage previously
+    if (localStorage.getItem('color-theme')) {
+      if (localStorage.getItem('color-theme') === 'light') {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('color-theme', 'dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('color-theme', 'light');
+      }
+
+    // if NOT set via local storage previously
+    } else {
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('color-theme', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('color-theme', 'dark');
+      }
+    }
+  });
+</script>

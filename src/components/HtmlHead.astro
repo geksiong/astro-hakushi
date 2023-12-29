@@ -46,4 +46,21 @@ const { title, description, image = "/blog-placeholder-1.jpg" } = Astro.props;
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
 
-<ViewTransitions />
+<!--ViewTransitions /-->
+
+<script is:inline>
+  function setDarkMode() {
+    const isDarkSet = localStorage.getItem('color-theme') === 'dark';
+    const isThemeStored = 'color-theme' in localStorage;
+    const isDarkPreferred = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+    if (isDarkSet || (!isThemeStored && isDarkPreferred)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }
+
+  setDarkMode();
+</script>

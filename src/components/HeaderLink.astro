@@ -13,14 +13,14 @@ const isActive = href === pathname || href === pathname.replace(/\/$/, "");
   href={href}
   class:list={[className, { active: isActive }]}
   {...props}
-  class="inline-block hover:text-indigo-600"
+  class="inline-block hover:text-primary"
 >
   <slot />
 </a>
 
 <style>
   a.active {
-    @apply text-indigo-600;
+    @apply text-accent;
     font-weight: bolder;
     text-decoration: underline;
   }
