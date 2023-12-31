@@ -1,5 +1,5 @@
 ---
-import Icon from "astro-icon";
+import { Icon } from "astro-icon/components";
 
 import Brand from "@components/Brand.astro";
 import HeaderLink from "./HeaderLink.astro";
@@ -15,68 +15,65 @@ let links = siteConfig.nav;
   </div>
 
   <div class="flex-grow basis-1/2 space-x-4 text-center">
-    { links?.map((link: any) => (
-      <HeaderLink href={link.url}>{link.name}</HeaderLink>
-    ))}
+    {links?.map((link: any) => <HeaderLink href={link.url}>{link.name}</HeaderLink>)}
   </div>
 
   <div class="flex-grow basis-1/4 space-x-2 text-right">
-    <button><Icon name="ri:search-line" height="1.5em" /></button>
+    <button><Icon class="text-2xl" name="ri:search-line" /></button>
     <button id="theme-toggle" type="button">
-      <Icon id="theme-toggle-dark-icon" class="hidden" name="ri:moon-line" height="1.5em" />
-      <Icon id="theme-toggle-light-icon" class=hidden" name="ri:sun-line" height="1.5em" />
-  </button>
+      <Icon id="theme-toggle-dark-icon" class="hidden text-2xl" name="ri:moon-line" />
+      <Icon id="theme-toggle-light-icon" class="hidden text-2xl" name="ri:sun-line" />
+    </button>
   </div>
 </nav>
 
 <script is:inline>
-  var themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
-  var themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+  var themeToggleDarkIcon = document.getElementById("theme-toggle-dark-icon");
+  var themeToggleLightIcon = document.getElementById("theme-toggle-light-icon");
 
   function toggleDarkMode() {
-
     // Change the icons inside the button based on previous settings
-    const isDarkSet = localStorage.getItem('color-theme') === 'dark';
-    const isThemeStored = 'color-theme' in localStorage;
-    const isDarkPreferred = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const isDarkSet = localStorage.getItem("color-theme") === "dark";
+    const isThemeStored = "color-theme" in localStorage;
+    const isDarkPreferred = window.matchMedia("(prefers-color-scheme: dark)").matches;
 
     // On page load or when changing themes, best to add inline in `head` to avoid FOUC
     if (isDarkSet || (!isThemeStored && isDarkPreferred)) {
-      themeToggleDarkIcon?.classList.add('hidden');
-      themeToggleLightIcon?.classList.remove('hidden');
+      themeToggleDarkIcon?.classList.add("hidden");
+      themeToggleLightIcon?.classList.remove("hidden");
     } else {
-      themeToggleLightIcon?.classList.add('hidden');
-      themeToggleDarkIcon?.classList.remove('hidden');
+      themeToggleLightIcon?.classList.add("hidden");
+      themeToggleDarkIcon?.classList.remove("hidden");
     }
   }
 
   toggleDarkMode();
 
-  var themeToggleBtn = document.getElementById('theme-toggle');
+  var themeToggleBtn = document.getElementById("theme-toggle");
 
-  themeToggleBtn?.addEventListener('click', function() {
+  themeToggleBtn?.addEventListener("click", function () {
     // toggle icons inside button
-    themeToggleDarkIcon?.classList.toggle('hidden');
-    themeToggleLightIcon?.classList.toggle('hidden');
+    themeToggleDarkIcon?.classList.toggle("hidden");
+    themeToggleLightIcon?.classList.toggle("hidden");
 
     // if set via local storage previously
-    if (localStorage.getItem('color-theme')) {
-      if (localStorage.getItem('color-theme') === 'light') {
-        document.documentElement.classList.add('dark');
-        localStorage.setItem('color-theme', 'dark');
+    if (localStorage.getItem("color-theme")) {
+      if (localStorage.getItem("color-theme") === "light") {
+        document.documentElement.classList.add("dark");
+        localStorage.setItem("color-theme", "dark");
       } else {
-        document.documentElement.classList.remove('dark');
-        localStorage.setItem('color-theme', 'light');
+        document.documentElement.classList.remove("dark");
+        localStorage.setItem("color-theme", "light");
       }
 
-    // if NOT set via local storage previously
+      // if NOT set via local storage previously
     } else {
-      if (document.documentElement.classList.contains('dark')) {
-        document.documentElement.classList.remove('dark');
-        localStorage.setItem('color-theme', 'light');
+      if (document.documentElement.classList.contains("dark")) {
+        document.documentElement.classList.remove("dark");
+        localStorage.setItem("color-theme", "light");
       } else {
-        document.documentElement.classList.add('dark');
-        localStorage.setItem('color-theme', 'dark');
+        document.documentElement.classList.add("dark");
+        localStorage.setItem("color-theme", "dark");
       }
     }
   });

@@ -1,5 +1,5 @@
 ---
-import Icon from "astro-icon";
+import { Icon } from "astro-icon/components";
 
 import Brand from "@components/Brand.astro";
 import siteConfig from "@site/config.yml";
@@ -19,7 +19,7 @@ let links = siteConfig.links;
       links?.map((link: any) => (
         <a href={link.url} target="_blank">
           <span class="sr-only">{link.name}</span>
-          <Icon name={link.logo} height="1.5em" class="inline" />
+          <Icon name={link.logo} class="inline text-2xl" />
         </a>
       ))
     }

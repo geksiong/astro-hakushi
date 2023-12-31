@@ -1,7 +1,7 @@
 ---
 import type { PaginateFunction, Page } from "astro";
 import { type CollectionEntry, getCollection } from "astro:content";
-import Icon from "astro-icon";
+import { Icon } from "astro-icon/components";
 
 import BaseLayout from "@layouts/BaseLayout.astro";
 import FormattedDate from "@components/FormattedDate.astro";
@@ -41,7 +41,7 @@ const { page } = Astro.props;
       {
         page.url.next ? (
           <a href={page.url.next} title="Older posts" class="flex-grow basis-1/2">
-            <Icon name="ri:arrow-left-line" height="1em" class="inline" /> Older posts
+            <Icon name="ri:arrow-left-line" class="inline text-2xl" /> Older posts
           </a>
         ) : (
           <div />
@@ -51,7 +51,7 @@ const { page } = Astro.props;
       {
         page.url.prev ? (
           <a href={page.url.prev} title="Newer posts" class="flex-grow basis-1/2 text-right">
-            Newer posts <Icon name="ri:arrow-right-line" height="1em" class="inline" />
+            Newer posts <Icon name="ri:arrow-right-line" class="inline text-2xl" />
           </a>
         ) : (
           <div />

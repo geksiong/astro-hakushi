@@ -1,5 +1,5 @@
 ---
-import Icon from "astro-icon";
+import { Icon } from "astro-icon/components";
 
 import FormattedDate from "@components/FormattedDate.astro";
 import TableOfContents from '@components/TableOfContents.astro';
@@ -18,7 +18,7 @@ const wordCount = Astro.props.remarkPluginFrontmatter?.wordCount;
     <FormattedDate date={pubDate} /> { minutesRead && <span> / {wordCount} ({minutesRead})}</span>
   </div>
   <div class="flex items-center pb-8">
-    <Icon name="mdi:tag" height="1em" />
+    <Icon name="mdi:tag" class="text-base" />
     <span class="inline-block">
       {
         tags.map((tag: any) => (
@@ -38,7 +38,7 @@ const wordCount = Astro.props.remarkPluginFrontmatter?.wordCount;
   { prevPost &&
     <li class="flex-grow basis-1/2">
       <a href=`../${prevPost.slug}/` class="flex items-center">
-        <Icon name="ri:arrow-left-line" height="1.5em" class="" />
+        <Icon name="ri:arrow-left-line" class="text-2xl" />
         <span>
           <FormattedDate date={prevPost.data.pubDate} /><br />{prevPost.data.title}
         </span>
@@ -51,7 +51,7 @@ const wordCount = Astro.props.remarkPluginFrontmatter?.wordCount;
         <span class="flex-grow">
           <FormattedDate date={nextPost.data.pubDate} /><br />{nextPost.data.title}
         </span>
-        <Icon name="ri:arrow-right-line" height="1.5em" class="" />
+        <Icon name="ri:arrow-right-line" class="text-2xl" />
       </a>
     </li>
   }

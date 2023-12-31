@@ -18,6 +18,8 @@ import { pluginCollapsibleSections } from "@expressive-code/plugin-collapsible-s
 import remarkDirective from "remark-directive";
 import remarkCalloutDirectives from "@microflash/remark-callout-directives";
 
+import icon from "astro-icon";
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://change.me",
@@ -31,6 +33,7 @@ export default defineConfig({
     robotsTxt(robotsConfig),
     webmanifest(webmanifestConfig),
     alpinejs(),
+    icon(),
   ],
   markdown: {
     remarkPlugins: [
