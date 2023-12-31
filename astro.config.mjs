@@ -55,10 +55,11 @@ export default defineConfig({
               type: "element",
               tagName: "i",
               properties: {
-                class: "external-link",
+                class: "external-link-icon",
               },
             },
           ],
+          properties: { className: ["external-link"] },
         },
       ],
     ],
