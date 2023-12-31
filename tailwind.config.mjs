@@ -17,6 +17,11 @@ export default {
         primary: "var(--primary)",
         secondary: "var(--secondary)",
         accent: "var(--accent)",
+
+        container: "var(--container)",
+        "primary-container": "var(--primary-container)",
+        "secondary-container": "var(--secondary-container)",
+        "accent-container": "var(--accent-container)",
       },
     },
   },
