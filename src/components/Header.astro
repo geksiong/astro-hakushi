@@ -3,6 +3,7 @@ import { Icon } from "astro-icon/components";
 
 import Brand from "@components/Brand.astro";
 import HeaderLink from "./HeaderLink.astro";
+import SearchButton from "./SearchButton.astro";
 
 import siteConfig from "@site/config.yml";
 
@@ -19,7 +20,7 @@ let links = siteConfig.nav;
   </div>
 
   <div class="flex-grow basis-1/4 space-x-2 text-right">
-    <button><Icon class="text-2xl" name="ri:search-line" /></button>
+    <SearchButton />
     <button id="theme-toggle" type="button">
       <Icon id="theme-toggle-dark-icon" class="hidden text-2xl" name="ri:moon-line" />
       <Icon id="theme-toggle-light-icon" class="hidden text-2xl" name="ri:sun-line" />
