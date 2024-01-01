@@ -1,6 +1,6 @@
 ---
 title: "Remark plugins"
-description: ""
+description: "Demonstrations of integrated remark plugins"
 pubDate: 2023-12-26
 tags:
   - markdown

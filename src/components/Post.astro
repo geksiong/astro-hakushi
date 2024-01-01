@@ -13,11 +13,11 @@ const wordCount = Astro.props.remarkPluginFrontmatter?.wordCount;
 ---
 
 <article class="prose pb-8 dark:prose-invert">
-  <h1>{title}</h1>
-  <div>
+  <h1 class="mb-4">{title}</h1>
+  <div class="text-secondary">
     <FormattedDate date={pubDate} /> { minutesRead && <span> / {wordCount} ({minutesRead})}</span>
   </div>
-  <div class="flex items-center pb-8">
+  <div class="flex items-center py-4">
     <Icon name="mdi:tag" class="text-base" />
     <span class="inline-block">
       {
@@ -29,6 +29,7 @@ const wordCount = Astro.props.remarkPluginFrontmatter?.wordCount;
       }
     </span>
   </div>
+  <p class="text-xl italic font-serif">{description}</p>
 
   <TableOfContents headings={headings} />
 
@@ -40,7 +41,8 @@ const wordCount = Astro.props.remarkPluginFrontmatter?.wordCount;
       <a href=`../${prevPost.slug}/` class="flex items-center">
         <Icon name="ri:arrow-left-line" class="text-2xl" />
         <span>
-          <FormattedDate date={prevPost.data.pubDate} /><br />{prevPost.data.title}
+          <span class="text-sm text-secondary"><FormattedDate date={prevPost.data.pubDate} /></span>
+          <br />{prevPost.data.title}
         </span>
       </a>
     </li>
@@ -49,7 +51,8 @@ const wordCount = Astro.props.remarkPluginFrontmatter?.wordCount;
     <li class="flex-grow basis-1/2 text-right">
       <a href=`../${nextPost.slug}/` class="flex items-center">
         <span class="flex-grow">
-          <FormattedDate date={nextPost.data.pubDate} /><br />{nextPost.data.title}
+          <span class="text-sm text-secondary"><FormattedDate date={nextPost.data.pubDate} /></span>
+          <br />{nextPost.data.title}
         </span>
         <Icon name="ri:arrow-right-line" class="text-2xl" />
       </a>

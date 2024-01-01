@@ -78,11 +78,15 @@ kbd {
 }
 
 a {
-  @apply text-primary hover:underline !important;
+  @apply text-primary !important;
 }
 
 a:hover {
   @apply text-accent bg-accent-container !important;
+}
+
+blockquote {
+  @apply font-serif text-xl;
 }
 
 .external-link::after {

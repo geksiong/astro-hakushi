@@ -39,11 +39,11 @@ const description = "";
     <ul>
       {
         posts.map((post) => (
-          <li class="flex">
-            <span class="pr-8">
+          <li class="flex items-center">
+            <span class="basis-2/5 pr-4 text-right text-sm text-secondary sm:basis-1/4">
               <FormattedDate date={post.data.pubDate} />
             </span>
-            <a href={`/demo/${post.slug}/`}>
+            <a href={`/demo/${post.slug}/`} class="flex-grow basis-3/5 text-left sm:basis-3/4">
               <span class="title">{post.data.title}</span>
             </a>
           </li>

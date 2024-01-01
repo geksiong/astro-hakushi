@@ -71,8 +71,8 @@ let mock_data = render_mode ? mock_results : null;
 <script is:inline define:vars={{ mock_data, render_mode }}>
   function render_result(url, title, excerpt) {
     return `
-      <div class="hover:bg-secondary-container p-2">
-        <a href=${url} class="">
+      <div class="hover:bg-accent-container p-4">
+        <a href=${url}>
           <h3 class="font-bold">${title}</h3>
           <p>${excerpt}<p/>
         </a>
